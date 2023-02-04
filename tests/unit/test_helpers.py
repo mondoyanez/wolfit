@@ -26,5 +26,9 @@ def test_hours_ago():
     assert pretty_date(datetime.utcnow() - timedelta(hours=7)) == "7 hours ago"
 
 
+def test_just_now():
+    assert (pretty_date(datetime.utcnow() + timedelta(days=1))) == "just about now"
+
+
 def test_yesterday():
     assert (pretty_date(datetime.utcnow() - timedelta(days=1))) == "Yesterday"
