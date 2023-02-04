@@ -18,6 +18,10 @@ def test_minutes_ago():
     assert pretty_date(datetime.utcnow() - timedelta(minutes=5)) == "5 minutes ago"
 
 
+def test_hour_ago():
+    assert pretty_date(datetime.utcnow() - timedelta(hours=1)) == "an hour ago"
+
+
 def test_hours_ago():
     assert pretty_date(datetime.utcnow() - timedelta(hours=7)) == "7 hours ago"
 
