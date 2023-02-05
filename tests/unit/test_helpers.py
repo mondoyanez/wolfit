@@ -48,3 +48,7 @@ def test_eight_months_ago():
 
 def test_six_years_ago():
     assert (pretty_date(datetime.utcnow() - timedelta(days=2190))) == "6 years ago"
+
+
+def test_passed_int_instead_of_time():
+    assert (pretty_date(1)) == "53 years ago"
