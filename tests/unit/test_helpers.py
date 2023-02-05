@@ -52,3 +52,7 @@ def test_six_years_ago():
 
 def test_passed_int_instead_of_time():
     assert (pretty_date(1)) == "53 years ago"
+
+
+def test_passed_value_that_is_not_time_value():
+    assert (pretty_date() == "just now")
