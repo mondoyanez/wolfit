@@ -95,6 +95,12 @@ def test_post_vote_count_goes_down_after_voting(test_db, test_user, single_post)
     assert single_post.vote_count == -1
 
 
+def test_a_user_can_only_downvote_once(test_db, test_user, single_post):
+    single_post.down_vote(test_user)
+    single_post.down_vote(test_user)
+    assert single_post.vote_count == -1
+
+
 def test_posts_have_categories():
     cat = Category(title="learnpython")
     p = Post(title="Why indent?", body="Would not semicolons work?", category=cat)
