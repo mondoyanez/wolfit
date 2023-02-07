@@ -164,6 +164,15 @@ def test_comments_can_be_downvoted_on(test_db, test_user, single_post_with_comme
     assert comment.vote_count == 0
 
 
+def test_user_cannot_change_downvote_count_for_own_comment(
+    test_db, test_user, single_post_with_comment
+):
+    c = single_post_with_comment.comments[0]
+    assert c.vote_count == 1
+    c.down_vote(test_user)
+    assert c.vote_count == 1
+
+
 def test_posts_can_be_just_links_without_body(test_db, test_user):
     title = "Link post"
     new_post = Post(title=title, link=True, url="http://wou.edu")
