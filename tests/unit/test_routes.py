@@ -193,6 +193,11 @@ def test_single_post_should_have_link_to_voting(client, test_user, single_post):
     )
 
 
+def test_redirect_user_not_authenicated(client, test_user, single_post):
+    response = client.get(url_for("create_post"))
+    assert response.status_code == 302
+
+
 def test_should_be_a_category_page_that_shows_posts(
     client, test_user, single_post, default_category, random_post
 ):
