@@ -154,6 +154,16 @@ def test_user_cannot_change_vote_count_for_own_comment(
     assert c.vote_count == 1
 
 
+def test_comments_can_be_downvoted_on(test_db, test_user, single_post_with_comment):
+    comment = single_post_with_comment.comments[0]
+    new_user = User(username="robot", email="robot@gmail.com")
+    db.session.add(new_user)
+    db.session.commit()
+    comment.down_vote(new_user)
+    # All comments start with a default vote count of 1
+    assert comment.vote_count == 0
+
+
 def test_posts_can_be_just_links_without_body(test_db, test_user):
     title = "Link post"
     new_post = Post(title=title, link=True, url="http://wou.edu")
