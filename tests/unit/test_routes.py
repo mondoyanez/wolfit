@@ -130,6 +130,12 @@ def test_register_should_create_a_new_user(client):
     assert u.email == "john@beatles.com"
 
 
+def test_register_should_redirect_login_user_authenicated(client, test_user):
+    login(client, test_user.username, PASSWORD)
+    response = client.get(url_for("register"))
+    assert response.status_code == 302
+
+
 def test_user_should_have_a_profile_page(client, test_user):
     login(client, test_user.username, PASSWORD)
     response = client.get(url_for("user", username=test_user.username))
@@ -193,7 +199,7 @@ def test_single_post_should_have_link_to_voting(client, test_user, single_post):
     )
 
 
-def test_redirect_user_not_authenicated(client, test_user, single_post):
+def test_create_post_user_not_authenicated_redirect_login(client):
     response = client.get(url_for("create_post"))
     assert response.status_code == 302
 
