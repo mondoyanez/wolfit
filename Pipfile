@@ -4,25 +4,18 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pytest = "*"
+coverage = "*"
 flask = "*"
-flask-script = "*"
-flask-wtf = "*"
-flask-sqlalchemy = "*"
-flask-migrate = "*"
+flask-bootstrap = "*"
 flask-login = "*"
+flask-migrate = "*"
 praw = "*"
 markdown = "*"
-flask-bootstrap = "*"
-urllib3 = "*"
+flask-wtf = "*"
 email-validator = "*"
-pytest = "*"
-coverage = "*"
 
 [dev-packages]
-"flake8" = "*"
-pytest = "*"
-coverage = "*"
-flask-testing = "*"
 
 [requires]
-python_version = "3"
+python_version = "3.8"
